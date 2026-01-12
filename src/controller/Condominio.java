@@ -27,17 +27,14 @@ public class Condominio {
 	public Morador buscarMorador(Morador morador) throws Exception {
 		int posicao = morador.hashCode();
 		int tamanho = controleCondominio[posicao].size();
+		
 		for (int i = 0; i < tamanho; i++) {
 			Morador m = (Morador) controleCondominio[posicao].get(i);
 			if (m.numAp == morador.numAp) {
-				morador.nome = m.nome;
-				break;
+				return m;
 			}
 		}
-		if (morador.numAp == 0) {
-			throw new Exception("Modador não encontrado");
-		}
-		return morador;
+		throw new Exception("Modador não encontrado");
 	}
 	
 	public void removeMorador(Morador morador) throws Exception {
@@ -69,3 +66,4 @@ public class Condominio {
 	}
 	
 }
+
